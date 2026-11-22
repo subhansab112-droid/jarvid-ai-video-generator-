@@ -35,3 +35,49 @@ $('saveProject').onclick=()=>{localStorage.setItem('jarvid-project',JSON.stringi
 $('exportProject').onclick=()=>{let blob=new Blob([JSON.stringify(project(),null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jarvid-project.json';a.click();URL.revokeObjectURL(a.href);$('status').textContent='Project JSON exported.'};
 const saved=localStorage.getItem('jarvid-project');if(saved){try{let p=JSON.parse(saved);$('projectName').value=p.projectName||'My First Film';$('story').value=p.story||'';characters=p.characters||[];scenes=p.scenes||[];renderCharacters();renderScenes();$('status').textContent='Previous local project restored.'}catch{}}
 renderCharacters();renderScenes();
+// JARVID STUDIO - VIDEO SCENE PLANNER
+
+const generateVideoBtn = document.getElementById("generateVideoBtn");
+
+if (generateVideoBtn) {
+  generateVideoBtn.addEventListener("click", function () {
+    const story = document.getElementById("videoStory").value.trim();
+    const style = document.getElementById("videoStyle").value;
+    const status = document.getElementById("videoStatus");
+    const results = document.getElementById("videoResults");
+
+    if (!story) {
+      status.textContent = "Please write your story first.";
+      return;
+    }
+
+    const scenes = story
+      .split(/\n+|(?<=[.!?])\s+/)
+      .map(scene => scene.trim())
+      .filter(scene => scene.length > 0);
+
+    results.innerHTML = "";
+
+    scenes.forEach((scene, index) => {
+      const card = document.createElement("div");
+      card.className = "panel";
+
+      const heading = document.createElement("h3");
+      heading.textContent = "Scene " + (index + 1);
+
+      const description = document.createElement("p");
+      description.textContent = scene;
+
+      const styleText = document.createElement("p");
+      styleText.textContent = "Style: " + style;
+
+      card.appendChild(heading);
+      card.appendChild(description);
+      card.appendChild(styleText);
+      results.appendChild(card);
+    });
+
+    status.textContent =
+      scenes.length + " scenes prepared successfully. AI video service is not connected yet.";
+  });
+}
