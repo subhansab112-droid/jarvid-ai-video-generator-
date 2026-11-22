@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jarvid AI Video Generator</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand">JARVID <span>STUDIO</span></div><div class="tag">FREE • OPEN SOURCE STARTER</div></header>
+<main>
+  <section class="hero"><p class="eyebrow">YOUR STORY → YOUR FILM</p><h1>Build your film,<br><em>scene by scene.</em></h1>
+  <p class="muted">A free, local-first workspace for scripts, characters and shot planning. No paid API keys.</p></section>
+  <section class="panel">
+    <div class="section-head"><div><p class="eyebrow">01 / STORY</p><h2>Start with an idea</h2></div><button id="sampleBtn" class="ghost">Load sample</button></div>
+    <label for="projectName">Project name</label><input id="projectName" value="My First Film">
+    <label for="story">Your story / screenplay</label><textarea id="story" rows="7" placeholder="Write your story here. Use paragraphs to separate story beats..."></textarea>
+    <div class="actions"><button id="makeScenes" class="primary">Create scene outline</button><button id="saveProject" class="secondary">Save project</button></div>
+    <p id="status" class="status" aria-live="polite">Projects are saved in this browser on this device.</p>
+  </section>
+  <section class="panel">
+    <div class="section-head"><div><p class="eyebrow">02 / CHARACTERS</p><h2>Character bible</h2></div><button id="addCharacter" class="ghost">+ Add character</button></div>
+    <div id="characters" class="character-list"></div>
+    <p class="hint">Add a consistent description and upload a reference image for each character. Images stay in this browser; they are not uploaded to a server.</p>
+  </section>
+  <section class="panel">
+    <div class="section-head"><div><p class="eyebrow">03 / STORYBOARD</p><h2>Scene outline</h2></div><button id="exportProject" class="ghost">Export project JSON</button></div>
+    <div id="scenes" class="scenes empty">Your scenes will appear here after you create an outline.</div>
+  </section>
+  <footer><span>JARVID STUDIO · v0.1</span><span>Free starter · No paid APIs</span></footer>
+</main>
+<script src="app.js"></script>
+</body></html>
